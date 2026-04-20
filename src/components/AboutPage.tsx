@@ -1,265 +1,237 @@
 import { Button } from './ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Badge } from './ui/badge';
-import { Quote, Heart, Users, Trophy, BookOpen, Shield, Target, Zap } from 'lucide-react';
+import { Card, CardContent } from './ui/card';
+import { Trophy, BookOpen, Users, Heart, Target, Quote } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 
 interface AboutPageProps {
   onPageChange: (page: string) => void;
 }
 
+const mission = [
+  'Keep girls off the streets and away from early marriage.',
+  'Empower them through sport, education, and life skills.',
+  'Send them back to school — and help them finish.',
+  'Build confident, compassionate leaders for Eastern Province and beyond.',
+];
+
+const programs = [
+  {
+    icon: Trophy,
+    title: 'Competitive football',
+    body:
+      'Weekly training and league play — unbeaten in the 2024/25 Eastern Women Provincial League, now back in the Zambia Super League.',
+  },
+  {
+    icon: BookOpen,
+    title: 'Education support',
+    body:
+      'School fees, materials, and mentoring so teenage mothers and dropouts can return to the classroom and graduate.',
+  },
+  {
+    icon: Users,
+    title: 'Life skills & mentoring',
+    body:
+      'Leadership, financial literacy, health, faith-based guidance, and gender-based-violence sensitisation workshops.',
+  },
+  {
+    icon: Heart,
+    title: 'Community outreach',
+    body:
+      'Our girls visit schools, mentor younger players, and lead community clean-ups and awareness drives.',
+  },
+];
+
+const visionGoals = [
+  'Serve 300+ girls annually across Eastern Province.',
+  'Build a permanent training facility with pitches, classrooms, and community space.',
+  'Launch a youth academy for girls from age 8.',
+  'Put every player through a finished school career.',
+  'Compete at Zambia’s top level and qualify for international tournaments.',
+  'Run exchange programmes with clubs outside Zambia.',
+];
+
 export default function AboutPage({ onPageChange }: AboutPageProps) {
-  const missionPoints = [
-    'Keep girls off the streets and away from risky behavior.',
-    'Empower them through sport, education, and life skills.',
-    'Help them see that their value is limitless — on and off the pitch.'
-  ];
-
-  const approachItems = [
-    {
-      icon: Trophy,
-      title: 'Sport teaches discipline, teamwork, and resilience',
-      description: 'Through structured training and competitive play, girls learn valuable life skills.'
-    },
-    {
-      icon: BookOpen,
-      title: 'Education support ensures girls return to class',
-      description: 'Teenage mothers and school dropouts receive the support they need to continue learning.'
-    },
-    {
-      icon: Users,
-      title: 'Life skills workshops prepare for the future',
-      description: 'Training in leadership, job readiness, and community engagement builds confident leaders.'
-    },
-    {
-      icon: Heart,
-      title: 'Faith and values guide our approach',
-      description: 'Building character alongside skill, creating role models for the community.'
-    }
-  ];
-
-  const challenges = [
-    'Early marriage cutting education short',
-    'Lack of safe spaces to gather and grow',
-    'Peer pressure toward substance abuse and risky lifestyles'
-  ];
-
-  const solutions = [
-    'Teenage mothers returning to school and graduating',
-    'Players representing Eastern Province in national competitions',
-    'Former players becoming coaches, teachers, and mentors'
-  ];
-
-  const visionGoals = [
-    'Expand our reach to serve 300+ girls annually across Eastern Province',
-    'Establish a permanent training facility with proper pitches, classrooms, and community spaces',
-    'Develop a youth academy for girls as young as 8 years old',
-    'Increase educational support, ensuring every player has the chance to finish school',
-    'Compete at the highest level in Zambia\'s Super League and qualify for international tournaments'
-  ];
-
   return (
-    <div className="min-h-screen bg-off-white py-8">
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="font-montserrat font-bold text-5xl text-gray-800 mb-6">About Us — The Heart Behind the Game</h1>
+    <div className="bg-off-white">
+      {/* Header */}
+      <section className="bg-white border-b border-gray-100">
+        <div className="max-w-5xl mx-auto px-4 py-20 text-center">
+          <h1 className="font-montserrat font-bold text-5xl text-gray-900 mb-5">Our Story</h1>
+          <p className="font-lato text-xl text-gray-600 max-w-3xl mx-auto">
+            We are Chipata Girls FC — a community-driven football club in Eastern Province,
+            Zambia, using sport to keep girls in school and change what’s possible for them.
+          </p>
         </div>
+      </section>
 
-        {/* Our Beginning */}
-        <section className="mb-20">
-          <Card className="border-none shadow-lg">
-            <CardContent className="p-8">
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div>
-                  <h2 className="font-montserrat font-bold text-3xl text-gray-800 mb-6">Our Beginning</h2>
-                  <p className="font-lato text-lg text-gray-700 mb-4">
-                    We started in 2019 with nothing more than a dusty field, a few borrowed balls, and a vision that 
-                    every girl in Chipata should have the chance to dream bigger.
-                  </p>
-                  <p className="font-lato text-lg text-gray-700 mb-4">
-                    Mr. C. Dube and Mr. M. J. Phiri first met a group of girls playing barefoot at the Chipata College 
-                    Education grounds. They saw determination in their eyes — but also the obstacles they faced: poverty, 
-                    early marriages, street life, and a future that felt decided before it even began.
-                  </p>
-                  <p className="font-lato text-lg text-gray-700">
-                    Instead of turning away, they stepped in. They became coaches, mentors, guardians, and sometimes even 
-                    parents. Chipata Girls FC was born — not just as a football club, but as a lifeline.
-                  </p>
-                </div>
-                <div>
-                  <ImageWithFallback 
-                    src="https://images.unsplash.com/photo-1501663888157-d13d2b51d954?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx8fDE3NTUwMDY0NzR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                    alt="Chipata Girls FC founding story"
-                    className="w-full h-80 object-cover rounded-lg shadow-md"
-                  />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
-
-        {/* Our Mission */}
-        <section className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="font-montserrat font-bold text-4xl text-gray-800 mb-6">Our Mission</h2>
-            <div className="max-w-4xl mx-auto">
-              <p className="font-lato text-xl text-gray-700 mb-6">We are more than a team.</p>
-              <p className="font-lato text-xl text-gray-700 mb-6">We are a community where girls feel safe, seen, and valued.</p>
-              <p className="font-lato text-xl text-gray-700 mb-8">We use football as the doorway — but the real goal is building stronger futures.</p>
-              
-              <div className="bg-white p-8 rounded-lg shadow-lg">
-                <h3 className="font-montserrat font-medium text-2xl text-teal mb-6">Our mission is simple:</h3>
-                <div className="space-y-4">
-                  {missionPoints.map((point, index) => (
-                    <div key={index} className="flex items-start space-x-3">
-                      <div className="w-6 h-6 bg-warm-orange rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                        <Target className="w-3 h-3 text-white" />
-                      </div>
-                      <p className="font-lato text-lg text-gray-700 text-left">{point}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+      {/* Founding */}
+      <section className="py-20 px-4 max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="font-montserrat font-bold text-3xl text-gray-900 mb-6">It started on a dusty field in 2019</h2>
+            <div className="space-y-4 font-lato text-gray-700 text-lg leading-relaxed">
+              <p>
+                Founders Mr. C. Dube and Mr. M. J. Phiri met a group of girls playing
+                barefoot at the Chipata College Education grounds. No kits. No equipment.
+                No league. Just determination.
+              </p>
+              <p>
+                Instead of walking away, they stepped in — as coaches, mentors, guardians,
+                and sometimes parents. Chipata Girls FC was born: a football club, yes,
+                but more importantly, a lifeline.
+              </p>
+              <p>
+                Six years later, over 100 girls train with us every week. Some came from
+                early teenage marriages. Some had dropped out of school. All of them now
+                have a team that believes in them, and a path they get to choose.
+              </p>
             </div>
           </div>
-        </section>
-
-        {/* Our Approach */}
-        <section className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="font-montserrat font-bold text-4xl text-gray-800 mb-6">Our Approach</h2>
-            <p className="font-lato text-xl text-gray-700 max-w-3xl mx-auto mb-8">
-              We don't just train football players; we raise leaders.
-            </p>
+          <div>
+            <ImageWithFallback
+              src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80"
+              alt="Chipata Girls FC training"
+              className="w-full h-96 object-cover rounded-xl shadow-md"
+            />
           </div>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-8">
-            {approachItems.map((item, index) => (
-              <Card key={index} className="border-none shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <CardContent className="p-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-teal rounded-full flex items-center justify-center flex-shrink-0">
-                      <item.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="font-montserrat font-medium text-lg text-gray-800 mb-2">{item.title}</h3>
-                      <p className="font-lato text-muted-foreground">{item.description}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+      {/* Mission */}
+      <section className="bg-white py-20 px-4">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="font-montserrat font-bold text-4xl text-gray-900 mb-4">Our mission</h2>
+          <p className="font-lato text-xl text-gray-700 mb-12">
+            We teach the game. We change the life.
+          </p>
+          <div className="grid md:grid-cols-2 gap-4 text-left max-w-3xl mx-auto">
+            {mission.map((point) => (
+              <div key={point} className="flex items-start gap-3 bg-off-white rounded-lg p-5">
+                <div className="w-6 h-6 bg-warm-orange rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <Target className="w-3 h-3 text-white" />
+                </div>
+                <p className="font-lato text-gray-800">{point}</p>
+              </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="bg-light-gray p-8 rounded-lg">
-            <p className="font-lato text-lg text-gray-700 text-center">
-              Every training session, every game, every conversation is a step toward helping our girls believe in themselves and their futures.
+      {/* What we do */}
+      <section className="py-20 px-4 max-w-7xl mx-auto">
+        <div className="max-w-3xl mx-auto text-center mb-14">
+          <h2 className="font-montserrat font-bold text-4xl text-gray-900 mb-4">What we do</h2>
+          <p className="font-lato text-lg text-gray-700">
+            Football is the doorway. Everything behind it is the real work.
+          </p>
+        </div>
+        <div className="grid md:grid-cols-2 gap-6">
+          {programs.map((p) => (
+            <Card key={p.title} className="border-none shadow-md">
+              <CardContent className="p-7 flex gap-5">
+                <div className="w-12 h-12 bg-teal rounded-lg flex items-center justify-center flex-shrink-0">
+                  <p.icon className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="font-montserrat font-medium text-xl text-gray-900 mb-2">{p.title}</h3>
+                  <p className="font-lato text-muted-foreground">{p.body}</p>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* Letter from the director */}
+      <section className="bg-white py-20 px-4">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid lg:grid-cols-3 gap-10 items-start">
+            <div className="lg:col-span-2">
+              <div className="flex items-center mb-6">
+                <Quote className="w-10 h-10 text-teal mr-3" />
+                <h2 className="font-montserrat font-bold text-3xl text-gray-900">A letter from our director</h2>
+              </div>
+              <div className="space-y-5 font-lato text-lg text-gray-700 leading-relaxed">
+                <p className="font-montserrat font-medium text-gray-900">Dear friends and supporters,</p>
+                <p>
+                  I started Chipata Girls FC to curb early marriage in our community and to
+                  take the girl child back to school. I have always seen myself as a tool of
+                  change — and football has been the easiest way to reach her.
+                </p>
+                <p>
+                  Our biggest challenge has been finances. Equipment, transport, school fees —
+                  every kwacha stretched. The girls, though, have given me courage that one day
+                  things will be better. Many of those I have groomed now play for bigger clubs
+                  in the premier league. Others I took back to school are in full employment
+                  through football.
+                </p>
+                <p>
+                  One story I will always carry: my goalkeeper, now with the Zambia Army.
+                  She could hardly eat some days, her family struggled with rent — but she
+                  never missed a training. Today she has built her parents a house. I am proud
+                  of her.
+                </p>
+                <p>
+                  Do not take these girls as kitchen helpers. Take them as pioneers of change.
+                  Give them serious programmes, and stand with us.
+                </p>
+                <p className="font-montserrat font-medium text-teal">
+                  — Chipangula Dube, Club Director & Founder
+                </p>
+              </div>
+            </div>
+            <div>
+              <ImageWithFallback
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
+                alt="Chipangula Dube, Club Director"
+                className="w-full aspect-square object-cover rounded-xl shadow-md"
+              />
+              <p className="font-lato text-sm text-muted-foreground text-center mt-3">
+                Chipangula Dube · Club Director & Founder
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Vision */}
+      <section className="py-20 px-4 max-w-7xl mx-auto">
+        <div className="bg-teal text-white rounded-2xl p-10 md:p-14">
+          <div className="max-w-3xl mb-10">
+            <h2 className="font-montserrat font-bold text-4xl mb-4">Where we’re going</h2>
+            <p className="font-lato text-lg text-teal-50">
+              Over the next five years we want every girl in Eastern Province — and beyond —
+              to know she has a choice. Here is what we’re building toward:
             </p>
           </div>
-        </section>
-
-        {/* Why It Matters */}
-        <section className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="font-montserrat font-bold text-4xl text-gray-800 mb-6">Why It Matters</h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card className="border-none shadow-lg">
-              <CardHeader>
-                <CardTitle className="font-montserrat font-medium text-2xl text-center">The Challenges Girls Face</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="font-lato text-lg text-gray-700 mb-6 text-center">
-                  In our community, the challenges girls face are real and urgent:
-                </p>
-                <div className="space-y-4">
-                  {challenges.map((challenge, index) => (
-                    <div key={index} className="flex items-start space-x-3">
-                      <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                        <Zap className="w-3 h-3 text-white" />
-                      </div>
-                      <p className="font-lato text-gray-700">{challenge}</p>
-                    </div>
-                  ))}
+          <div className="grid md:grid-cols-2 gap-5">
+            {visionGoals.map((goal) => (
+              <div key={goal} className="flex items-start gap-3">
+                <div className="w-6 h-6 bg-warm-orange rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <Target className="w-3 h-3 text-white" />
                 </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-none shadow-lg">
-              <CardHeader>
-                <CardTitle className="font-montserrat font-medium text-2xl text-center">What We've Achieved</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="font-lato text-lg text-gray-700 mb-6 text-center">
-                  We've seen what happens when girls have a place like Chipata Girls FC:
-                </p>
-                <div className="space-y-4">
-                  {solutions.map((solution, index) => (
-                    <div key={index} className="flex items-start space-x-3">
-                      <div className="w-6 h-6 bg-teal rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                        <Trophy className="w-3 h-3 text-white" />
-                      </div>
-                      <p className="font-lato text-gray-700">{solution}</p>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-
-        {/* Our Vision */}
-        <section className="mb-20">
-          <Card className="bg-teal text-white border-none shadow-lg">
-            <CardContent className="p-8">
-              <div className="text-center mb-8">
-                <h2 className="font-montserrat font-bold text-4xl mb-6">Our Vision</h2>
-                <p className="font-lato text-xl mb-8">
-                  We dream of a day when every girl in Eastern Province — and beyond — knows she has a choice.
-                </p>
-                <p className="font-lato text-lg mb-8">
-                  We aim to grow into one of the strongest women's football clubs in Zambia, Southern Africa, and eventually, 
-                  the world. But more than trophies, we want to see thousands of girls living empowered, purpose-driven lives.
-                </p>
+                <p className="font-lato text-white">{goal}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-              <div className="max-w-4xl mx-auto">
-                <h3 className="font-montserrat font-medium text-2xl mb-8 text-center">Over the next five years, we aim to:</h3>
-                <div className="grid md:grid-cols-2 gap-6">
-                  {visionGoals.map((goal, index) => (
-                    <div key={index} className="flex items-start space-x-3">
-                      <div className="w-6 h-6 bg-warm-orange rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                        <Target className="w-3 h-3 text-white" />
-                      </div>
-                      <p className="font-lato text-white">{goal}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
-
-        {/* Call to Action */}
-        <section className="text-center">
-          <Card className="border-none shadow-lg">
-            <CardContent className="p-8">
-              <h2 className="font-montserrat font-bold text-3xl text-gray-800 mb-6">Join us in making that vision real.</h2>
-              <p className="font-lato text-xl text-gray-700 mb-8">
-                When you donate, you're not funding a game — you're investing in a future leader.
-              </p>
-              <Button 
-                onClick={() => onPageChange('donate')}
-                className="bg-warm-orange hover:bg-orange-600 text-white font-montserrat font-medium text-lg px-10 py-4"
-              >
-                Donate Now — Be Part of Her Story
-              </Button>
-            </CardContent>
-          </Card>
-        </section>
-      </div>
+      {/* CTA */}
+      <section className="py-20 px-4 text-center max-w-3xl mx-auto">
+        <h2 className="font-montserrat font-bold text-3xl text-gray-900 mb-4">
+          Join us in making that vision real.
+        </h2>
+        <p className="font-lato text-lg text-gray-700 mb-8">
+          When you donate, you’re not funding a game. You’re investing in a future leader.
+        </p>
+        <Button
+          onClick={() => onPageChange('donate')}
+          className="bg-warm-orange hover:bg-orange-600 text-white font-montserrat font-medium text-lg px-10 py-5"
+        >
+          Donate Now
+        </Button>
+      </section>
     </div>
   );
 }

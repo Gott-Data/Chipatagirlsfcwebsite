@@ -1,98 +1,41 @@
-// This file shows the configuration you'd need for real Stripe integration
+// Reads Stripe configuration from Vite env vars (prefixed VITE_).
+// See .env.example at the repo root.
 
-// Frontend Stripe configuration
-// You'll need to install: npm install @stripe/stripe-js @stripe/react-stripe-js
+type EnvMap = Record<string, string | undefined>;
 
-/*
-import { loadStripe } from '@stripe/stripe-js';
-
-// Make sure to use your publishable key (starts with pk_)
-// Never put your secret key (starts with sk_) in frontend code!
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
-
-export default stripePromise;
-*/
-
-// Backend API route example (if using Next.js)
-// File: /pages/api/create-payment-intent.js or /app/api/create-payment-intent/route.ts
-
-/*
-import Stripe from 'stripe';
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2023-10-16',
-});
-
-export async function POST(request: Request) {
-  try {
-    const { amount, currency = 'usd', metadata } = await request.json();
-
-    // Create a PaymentIntent with the order amount and currency
-    const paymentIntent = await stripe.paymentIntents.create({
-      amount,
-      currency,
-      metadata,
-      automatic_payment_methods: {
-        enabled: true,
-      },
-    });
-
-    return Response.json({
-      client_secret: paymentIntent.client_secret,
-    });
-  } catch (err) {
-    return Response.json(
-      { error: err.message },
-      { status: 400 }
-    );
-  }
-}
-*/
-
-// Environment variables you'll need:
-// STRIPE_SECRET_KEY=sk_test_... (or sk_live_... for production)
-// NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_... (or pk_live_... for production)
+const env = (import.meta as unknown as { env: EnvMap }).env ?? {};
 
 export const STRIPE_CONFIG = {
-  // Demo configuration
-  publishableKey: 'pk_test_YOUR_PUBLISHABLE_KEY_HERE',
-  
-  // Supported payment methods
-  paymentMethods: [
-    'card',
-    'google_pay', 
-    'apple_pay',
-    'link'
-  ],
-  
-  // Currency settings
-  currency: 'usd',
-  
-  // Appearance customization
-  appearance: {
-    theme: 'stripe' as const,
-    variables: {
-      colorPrimary: '#008080', // Teal color from your brand
-      colorBackground: '#ffffff',
-      colorText: '#333333',
-      colorDanger: '#df1b41',
-      fontFamily: 'Lato, system-ui, sans-serif',
-      spacingUnit: '4px',
-      borderRadius: '8px',
-    },
-  },
+  publishableKey: env.VITE_STRIPE_PUBLISHABLE_KEY ?? '',
+  genericPaymentLink: env.VITE_STRIPE_PAYMENT_LINK ?? '',
+  perTierPaymentLinks: {
+    '25': env.VITE_STRIPE_PAYMENT_LINK_25 ?? '',
+    '50': env.VITE_STRIPE_PAYMENT_LINK_50 ?? '',
+    '100': env.VITE_STRIPE_PAYMENT_LINK_100 ?? '',
+    '250': env.VITE_STRIPE_PAYMENT_LINK_250 ?? '',
+    '500': env.VITE_STRIPE_PAYMENT_LINK_500 ?? '',
+  } as Record<string, string>,
 };
 
-// Webhook configuration for handling successful payments
-export const WEBHOOK_CONFIG = {
-  // Events to listen for
-  events: [
-    'payment_intent.succeeded',
-    'payment_intent.payment_failed',
-    'customer.subscription.created',
-    'invoice.payment_succeeded'
-  ],
-  
-  // Endpoint: /api/webhooks/stripe
-  // You'll need to verify webhook signatures for security
+export const CONTACT = {
+  email: env.VITE_CONTACT_EMAIL ?? 'info@chipatagirlsfc.org',
+  phone: env.VITE_CONTACT_PHONE ?? '+260 XXX XXX XXX',
+  facebook:
+    env.VITE_FACEBOOK_URL ??
+    'https://www.facebook.com/p/Chipata-Girls-FC-61554761447142/',
 };
+
+// Returns the best Stripe Payment Link URL for a given donation amount, or
+// an empty string when Stripe has not been configured yet. A tier-specific
+// link takes priority; otherwise the generic link is appended with a custom
+// amount suggestion so a single link can cover every option.
+export function getPaymentLink(amount?: string): string {
+  const tierLink = amount ? STRIPE_CONFIG.perTierPaymentLinks[amount] : '';
+  if (tierLink) return tierLink;
+  return STRIPE_CONFIG.genericPaymentLink;
+}
+
+export function isStripeConfigured(): boolean {
+  return Boolean(STRIPE_CONFIG.genericPaymentLink) ||
+    Object.values(STRIPE_CONFIG.perTierPaymentLinks).some(Boolean);
+}
