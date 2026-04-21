@@ -1,7 +1,7 @@
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
-import { Users, Trophy, Heart, Shield, GraduationCap, ArrowRight, Quote } from 'lucide-react';
+import { Users, Trophy, Heart, Shield, GraduationCap, ArrowRight, Quote, Sparkles } from 'lucide-react';
 import LocalImage from './LocalImage';
 
 interface HomePageProps {
@@ -9,10 +9,10 @@ interface HomePageProps {
 }
 
 const impactStats = [
-  { label: 'Girls in the program', value: '100+' },
-  { label: '2024/25 wins', value: '17' },
-  { label: 'Losses', value: '0' },
-  { label: 'Clean sheets', value: '10' },
+  { label: 'Girls in our programme', value: '100+' },
+  { label: 'Years changing futures', value: '6' },
+  { label: 'Safe training afternoons a week', value: '4' },
+  { label: 'Girls left behind', value: '0' },
 ];
 
 const voices = [
@@ -50,10 +50,10 @@ const pillars = [
       'We pay school fees, re-enrol teenage mothers and dropouts, and expect every player to put the classroom first.',
   },
   {
-    icon: Trophy,
-    title: 'Football that changes lives',
+    icon: Sparkles,
+    title: 'Leaders beyond the pitch',
     body:
-      'Unbeaten in the Eastern Provincial League (17W-2D-0L) and back in the Zambia Super League — proof rural girls belong at the top.',
+      'Our alumni are teachers, university students, coaches, and community mentors — role models whose influence reaches far beyond Eastern Province.',
   },
 ];
 
