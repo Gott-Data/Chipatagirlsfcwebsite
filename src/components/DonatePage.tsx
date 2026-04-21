@@ -6,7 +6,7 @@ import { Alert, AlertDescription } from './ui/alert';
 import {
   Heart, BookOpen, Trophy, Users, Target, Shield, AlertCircle, ExternalLink,
 } from 'lucide-react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
+import LocalImage from './LocalImage';
 import { getPaymentLink, isStripeConfigured } from '../lib/stripe-config';
 
 interface DonatePageProps {
@@ -56,8 +56,9 @@ export default function DonatePage({ onPageChange }: DonatePageProps) {
             </p>
           </div>
           <div>
-            <ImageWithFallback
-              src="https://images.unsplash.com/photo-1571008887538-b36bb32f4571?auto=format&fit=crop&w=1200&q=80"
+            <LocalImage
+              src="/images/team-action.jpg"
+              fallbackSrc="https://images.unsplash.com/photo-1571008887538-b36bb32f4571?auto=format&fit=crop&w=1200&q=80"
               alt="Young footballers celebrating"
               className="w-full h-96 object-cover rounded-xl shadow-md"
             />

@@ -1,7 +1,7 @@
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
 import { Trophy, BookOpen, Users, Heart, Target, Quote } from 'lucide-react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
+import LocalImage from './LocalImage';
 
 interface AboutPageProps {
   onPageChange: (page: string) => void;
@@ -88,8 +88,9 @@ export default function AboutPage({ onPageChange }: AboutPageProps) {
             </div>
           </div>
           <div>
-            <ImageWithFallback
-              src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80"
+            <LocalImage
+              src="/images/about.jpg"
+              fallbackSrc="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80"
               alt="Chipata Girls FC training"
               className="w-full h-96 object-cover rounded-xl shadow-md"
             />
@@ -181,8 +182,9 @@ export default function AboutPage({ onPageChange }: AboutPageProps) {
               </div>
             </div>
             <div>
-              <ImageWithFallback
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
+              <LocalImage
+                src="/images/director.jpg"
+                fallbackSrc="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
                 alt="Chipangula Dube, Club Director"
                 className="w-full aspect-square object-cover rounded-xl shadow-md"
               />

@@ -2,7 +2,7 @@ import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
 import { Users, Trophy, Heart, Shield, GraduationCap, ArrowRight, Quote } from 'lucide-react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
+import LocalImage from './LocalImage';
 
 interface HomePageProps {
   onPageChange: (page: string) => void;
@@ -63,8 +63,9 @@ export default function HomePage({ onPageChange }: HomePageProps) {
       {/* Hero */}
       <section className="relative min-h-[85vh] flex items-center text-white">
         <div className="absolute inset-0 z-0">
-          <ImageWithFallback
-            src="https://images.unsplash.com/photo-1526232761682-d26e03ac148e?auto=format&fit=crop&w=1920&q=80"
+          <LocalImage
+            src="/images/hero.jpg"
+            fallbackSrc="https://images.unsplash.com/photo-1526232761682-d26e03ac148e?auto=format&fit=crop&w=1920&q=80"
             alt="Chipata Girls FC on the pitch"
             className="w-full h-full object-cover"
           />
@@ -179,8 +180,9 @@ export default function HomePage({ onPageChange }: HomePageProps) {
               </Button>
             </div>
             <div>
-              <ImageWithFallback
-                src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1200&q=80"
+              <LocalImage
+                src="/images/home-donate.jpg"
+                fallbackSrc="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1200&q=80"
                 alt="Young footballers in training"
                 className="w-full h-96 object-cover rounded-xl shadow-lg"
               />
