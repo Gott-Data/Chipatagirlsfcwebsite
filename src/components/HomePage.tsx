@@ -1,18 +1,18 @@
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
-import { Users, Trophy, Heart, Shield, GraduationCap, ArrowRight, Quote } from 'lucide-react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
+import { Users, Trophy, Heart, Shield, GraduationCap, ArrowRight, Quote, Sparkles } from 'lucide-react';
+import LocalImage from './LocalImage';
 
 interface HomePageProps {
   onPageChange: (page: string) => void;
 }
 
 const impactStats = [
-  { label: 'Girls in the program', value: '100+' },
-  { label: '2024/25 wins', value: '17' },
-  { label: 'Losses', value: '0' },
-  { label: 'Clean sheets', value: '10' },
+  { label: 'Girls in our programme', value: '100+' },
+  { label: 'Years changing futures', value: '6' },
+  { label: 'Safe training afternoons a week', value: '4' },
+  { label: 'Girls left behind', value: '0' },
 ];
 
 const voices = [
@@ -50,10 +50,10 @@ const pillars = [
       'We pay school fees, re-enrol teenage mothers and dropouts, and expect every player to put the classroom first.',
   },
   {
-    icon: Trophy,
-    title: 'Football that changes lives',
+    icon: Sparkles,
+    title: 'Leaders beyond the pitch',
     body:
-      'Unbeaten in the Eastern Provincial League (17W-2D-0L) and back in the Zambia Super League — proof rural girls belong at the top.',
+      'Our alumni are teachers, university students, coaches, and community mentors — role models whose influence reaches far beyond Eastern Province.',
   },
 ];
 
@@ -63,8 +63,9 @@ export default function HomePage({ onPageChange }: HomePageProps) {
       {/* Hero */}
       <section className="relative min-h-[85vh] flex items-center text-white">
         <div className="absolute inset-0 z-0">
-          <ImageWithFallback
-            src="https://images.unsplash.com/photo-1526232761682-d26e03ac148e?auto=format&fit=crop&w=1920&q=80"
+          <LocalImage
+            src="/images/hero.jpg"
+            fallbackSrc="https://images.unsplash.com/photo-1526232761682-d26e03ac148e?auto=format&fit=crop&w=1920&q=80"
             alt="Chipata Girls FC on the pitch"
             className="w-full h-full object-cover"
           />
@@ -179,8 +180,9 @@ export default function HomePage({ onPageChange }: HomePageProps) {
               </Button>
             </div>
             <div>
-              <ImageWithFallback
-                src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1200&q=80"
+              <LocalImage
+                src="/images/home-donate.jpg"
+                fallbackSrc="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1200&q=80"
                 alt="Young footballers in training"
                 className="w-full h-96 object-cover rounded-xl shadow-lg"
               />

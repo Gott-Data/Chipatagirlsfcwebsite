@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button } from './ui/button';
 import { Menu, X } from 'lucide-react';
+import Logo from './Logo';
 
 interface NavigationProps {
   currentPage: string;
@@ -28,11 +29,8 @@ export default function Navigation({ currentPage, onPageChange }: NavigationProp
     <nav className="bg-white/95 backdrop-blur shadow-sm sticky top-0 z-50 border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <button
-            onClick={() => go('home')}
-            className="font-montserrat font-bold text-xl text-teal"
-          >
-            Chipata Girls FC
+          <button onClick={() => go('home')} className="flex items-center gap-2">
+            <Logo />
           </button>
 
           <div className="hidden md:flex items-center space-x-1">

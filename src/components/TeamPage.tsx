@@ -2,7 +2,7 @@ import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
 import { Calendar, MapPin, Quote, ArrowRight } from 'lucide-react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
+import LocalImage from './LocalImage';
 import { CONTACT } from '../lib/stripe-config';
 
 interface TeamPageProps {
@@ -27,20 +27,23 @@ const players = [
   {
     name: 'Ruth Banda',
     position: 'Captain · Midfielder',
-    image: 'https://images.unsplash.com/photo-1515355758951-b4b20b8a4544?auto=format&fit=crop&w=800&q=80',
+    image: '/images/player-1.jpg',
+    fallback: 'https://images.unsplash.com/photo-1515355758951-b4b20b8a4544?auto=format&fit=crop&w=800&q=80',
     bio:
       'Calm under pressure. Ruth leads on the pitch and mentors the youngest players off it.',
   },
   {
     name: 'Mary Zulu',
     position: 'Striker',
-    image: 'https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=800&q=80',
+    image: '/images/player-2.jpg',
+    fallback: 'https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=800&q=80',
     bio: 'Top scorer of the season with 18 goals. Pace and precision in equal measure.',
   },
   {
     name: 'Chipo Lungu',
     position: 'Goalkeeper',
-    image: 'https://images.unsplash.com/photo-1519861531473-9200262188bf?auto=format&fit=crop&w=800&q=80',
+    image: '/images/player-3.jpg',
+    fallback: 'https://images.unsplash.com/photo-1519861531473-9200262188bf?auto=format&fit=crop&w=800&q=80',
     bio: 'Our wall at the back — 10 clean sheets and match-saving moments by the dozen.',
   },
 ];
@@ -78,7 +81,8 @@ const alumni = [
 const coach = {
   name: 'Coach M. J. Phiri',
   role: 'Head Coach & Mentor',
-  image: 'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=800&q=80',
+  image: '/images/coach.jpg',
+  fallback: 'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=800&q=80',
   quote:
     'I wanted to be what I didn’t have. We never had a female coach growing up. The relationships I build with these girls keep evolving — long after they stop being my players.',
 };
@@ -131,7 +135,7 @@ export default function TeamPage({ onPageChange }: TeamPageProps) {
           <div className="grid md:grid-cols-3 gap-8">
             {players.map((p) => (
               <Card key={p.name} className="border-none shadow-md overflow-hidden">
-                <ImageWithFallback src={p.image} alt={p.name} className="w-full h-72 object-cover" />
+                <LocalImage src={p.image} fallbackSrc={p.fallback} alt={p.name} className="w-full h-72 object-cover" />
                 <CardContent className="p-6">
                   <h3 className="font-montserrat font-medium text-xl text-gray-900">{p.name}</h3>
                   <Badge className="bg-teal text-white font-lato mt-2 mb-3">{p.position}</Badge>
@@ -147,7 +151,7 @@ export default function TeamPage({ onPageChange }: TeamPageProps) {
       <section className="py-20 px-4 max-w-7xl mx-auto">
         <Card className="border-none shadow-md overflow-hidden">
           <div className="grid lg:grid-cols-3 gap-0">
-            <ImageWithFallback src={coach.image} alt={coach.name} className="w-full h-80 lg:h-full object-cover" />
+            <LocalImage src={coach.image} fallbackSrc={coach.fallback} alt={coach.name} className="w-full h-80 lg:h-full object-cover" />
             <div className="lg:col-span-2 p-10 bg-white flex flex-col justify-center">
               <Quote className="w-10 h-10 text-warm-orange mb-5" />
               <p className="font-lato italic text-2xl text-gray-800 mb-6 leading-relaxed">
